@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <div className="container">
         <Navigation />
-        <Exercise />
+        <Exercise question="1 + 1" onAnswered={(answer: string) => {console.log(answer)}} />
       </div>
     );
   }
