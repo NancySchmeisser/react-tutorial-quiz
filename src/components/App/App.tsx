@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Navigation from '../Navigation/Navigation';
 import Quiz from '../Quiz/Quiz';
+import Teacher from '../Teacher/Teacher';
 
 interface AppState {
   currentView: string,
@@ -27,7 +28,7 @@ class App extends Component<AppProps, AppState> {
     return (
       <div className="container">
         <Navigation onNavigate={this.handleNavigation}/>
-        {this.state.currentView === "Student" ? <Quiz /> : <div>Teacher</div>}
+        {this.state.currentView === "Student" ? <Quiz /> : <Teacher/>}
       </div>
     );
   }
