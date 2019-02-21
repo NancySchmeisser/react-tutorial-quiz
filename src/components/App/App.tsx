@@ -3,12 +3,31 @@ import './App.css';
 import Navigation from '../Navigation/Navigation';
 import Quiz from '../Quiz/Quiz';
 
-class App extends Component {
+interface AppState {
+  currentView: string,
+}
+
+interface AppProps {
+
+}
+class App extends Component<AppProps, AppState> {
+  constructor(props: AppProps) {
+    super(props)
+
+    this.state = {
+      currentView: "Student",
+    }
+  }
+  handleNavigation = (newView: string) => {
+    this.setState({ currentView: newView })
+  }
+
+
   render() {
     return (
       <div className="container">
-        <Navigation />
-        <Quiz />
+        <Navigation onNavigate={this.handleNavigation}/>
+        {this.state.currentView === "Student" ? <Quiz /> : <div>Teacher</div>}
       </div>
     );
   }

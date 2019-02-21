@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
 import { Nav, Navbar, NavDropdown, FormControl, Form } from 'react-bootstrap';
 
-class Navigation extends Component {
+interface NavigationProps {
+  onNavigate: (newView: string) => void,
+}
+
+interface NavigationState {
+
+}
+
+class Navigation extends Component <NavigationProps, NavigationState> {
   render() {
     return (
       <Navbar bg="dark" expand="lg" variant="dark">
@@ -9,8 +17,8 @@ class Navigation extends Component {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse>
           <Nav className="mr-auto">
-            <Nav.Link href="#student">Student</Nav.Link>
-            <Nav.Link href="#teacher">Teacher</Nav.Link>
+            <Nav.Link onSelect={(event: any) => this.props.onNavigate("Student")} href="#student">Student</Nav.Link>
+            <Nav.Link onSelect={(event: any) => this.props.onNavigate("Teacher")} href="#teacher">Teacher</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
