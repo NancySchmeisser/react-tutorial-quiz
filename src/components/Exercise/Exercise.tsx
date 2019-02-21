@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Exercise.css';
 import { Form, Button } from 'react-bootstrap';
-import { ReplaceProps, BsPrefixProps } from 'react-bootstrap/helpers';
+
 
 interface ExerciseProps {
   question: string,

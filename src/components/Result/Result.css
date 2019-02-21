@@ -1,1 +1,17 @@
+.col {
+    border: 2px solid rgb(95, 87, 87);
+    width: 120px;
+    height: 50px;
+    padding: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+}
 
+h1 {
+    color:rgb(247, 145, 11);
+}
+
+.span {
+    color: green;
+    font-size: 20px;
+}

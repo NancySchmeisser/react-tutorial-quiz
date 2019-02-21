@@ -17,7 +17,9 @@ class Result extends Component<ResultProps, ResultState> {
 
   render() {
     return (
+      
       <div className="container">
+      <h1>Auswertung</h1>
         {this.props.exerciseList.map(nextExercise =>
           <div className="row">
             <div className="col">
@@ -27,7 +29,7 @@ class Result extends Component<ResultProps, ResultState> {
               {nextExercise.answer}
             </div>
             <div className="col">
-              {nextExercise.answer === nextExercise.correctAnswer ? "OK" : "You're an idiot! " + nextExercise.correctAnswer }
+              {nextExercise.answer === nextExercise.correctAnswer ? <span className="span">OK</span> : "You're an idiot! the right answer is " + nextExercise.correctAnswer }
             </div>
           </div>)}
       </div>

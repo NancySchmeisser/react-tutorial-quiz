@@ -5,7 +5,7 @@ import Result from '../Result/Result';
 
 
 interface QuizProps {
-
+  exerciseList: Array<{ question: string, answer: string, correctAnswer: string }>,
 }
 interface QuizState {
   exerciseList: Array<{ question: string, answer: string, correctAnswer: string }>,
@@ -17,12 +17,7 @@ class Quiz extends Component<QuizProps, QuizState> {
     super(props)
 
     this.state = {
-      exerciseList: [
-        { question: "1 + 5", answer: "", correctAnswer: "6" },
-        { question: "3 + 3", answer: "", correctAnswer: "6" },
-        { question: "4 + 2", answer: "", correctAnswer: "6" },
-        { question: "2 + 4", answer: "", correctAnswer: "6" },
-      ],
+      exerciseList: this.props.exerciseList.slice(0),
       currentExercise: 0,
       quizComplete: false,
 
