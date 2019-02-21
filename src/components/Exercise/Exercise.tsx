@@ -28,7 +28,7 @@ class Exercise extends Component<ExerciseProps, ExerciseState> {
             <Form.Label>{this.props.question}</Form.Label>
             <Form.Control type="text" placeholder="type answer" value={this.state.answer} onChange={(event: any) => { this.setState({ answer: event.target.value }) }} />
           </Form.Group>
-          <Button variant="primary" onClick={(event: any) => { this.props.onAnswered(this.state.answer) }}>
+          <Button variant="primary" onClick={(event: any) => {this.setState({answer:""}); this.props.onAnswered(this.state.answer) }}>
             OK
           </Button>
         </Form>
