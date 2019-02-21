@@ -42,7 +42,7 @@ class Quiz extends Component<QuizProps, QuizState> {
   }
   render() {
     if (this.state.quizComplete === true) {
-      return <Result/>
+      return <Result exerciseList={this.state.exerciseList}/>
     } else {
       return (
         <Exercise question={this.state.exerciseList[this.state.currentExercise].question} onAnswered={this.handleOnAnswered} />
