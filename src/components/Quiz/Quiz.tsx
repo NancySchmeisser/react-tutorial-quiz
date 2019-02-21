@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Quiz.css';
 import Exercise from '../Exercise/Exercise';
+import Result from '../Result/Result';
 
 
 interface QuizProps {
@@ -41,7 +42,7 @@ class Quiz extends Component<QuizProps, QuizState> {
   }
   render() {
     if (this.state.quizComplete === true) {
-      return <div>Fertig!</div>
+      return <Result/>
     } else {
       return (
         <Exercise question={this.state.exerciseList[this.state.currentExercise].question} onAnswered={this.handleOnAnswered} />
