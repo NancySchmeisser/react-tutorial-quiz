@@ -17,7 +17,7 @@ class App extends Component<AppProps, AppState> {
     super(props)
 
     this.state = {
-      currentView: "Student",
+      currentView: "Teacher",
       exerciseList: [
         { question: "1 + 5", answer: "", correctAnswer: "6" },
         { question: "3 + 3", answer: "", correctAnswer: "6" },
@@ -40,7 +40,7 @@ class App extends Component<AppProps, AppState> {
     return (
       <div className="container">
         <Navigation onNavigate={this.handleNavigation}/>
-        {this.state.currentView === "Student" ? <Quiz exerciseList={this.state.exerciseList} /> : <Teacher handleNewQuestion={this.handleNewQuestion}/>}
+        {this.state.currentView === "Student" ? <Quiz exerciseList={this.state.exerciseList} /> : <Teacher exerciseList={this.state.exerciseList} />}
       </div>
     );
   }

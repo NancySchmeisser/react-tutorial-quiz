@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './Quiz.css';
 import Exercise from '../Exercise/Exercise';
 import Result from '../Result/Result';
+import './Quiz.css';
 
 
 interface QuizProps {

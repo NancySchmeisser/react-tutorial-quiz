@@ -1,42 +1,74 @@
 import React, { Component } from 'react';
 import './Teacher.css';
-import { Form, Button } from 'react-bootstrap';
+
+
 
 interface TeacherProps {
-  handleNewQuestion : (newQuestion : {question: string, answer: string}) => void
+  exerciseList: Array<{ question: string, answer: string, correctAnswer: string }>,
 }
 interface TeacherState {
-  answer: string,
-  question: string,
-  
+  exerciseList: Array<{ question: string, answer: string, correctAnswer: string }>,
+
 }
 class Teacher extends Component<TeacherProps, TeacherState> {
   constructor(props: TeacherProps) {
     super(props)
-
-    this.state= {
-      answer: "",
-      question: "",
+    const modifiedList = this.props.exerciseList.slice(0)
+    modifiedList.push({question: "", answer: "", correctAnswer: ""})
+    this.state = {
+      exerciseList: modifiedList,
     }
+
+  }
+  handleQuestionChanged = (newValue: string, index: number) => {
+    const modifiedList = this.state.exerciseList.slice(0)
+    modifiedList[index].question = newValue
+    if (index === modifiedList.length-1) {
+      modifiedList.push({question: "", answer: "", correctAnswer: ""})
+    }
+    this.setState({ exerciseList: modifiedList })
   }
 
-  
+  handleAnswerChanged = (newValue: string, index: number) => {
+    const modifiedList = this.state.exerciseList.slice(0)
+    modifiedList[index].correctAnswer = newValue
+    if (index === modifiedList.length-1) {
+      modifiedList.push({question: "", answer: "", correctAnswer: ""})
+    }
+    this.setState({ exerciseList: modifiedList })
+  }
+
+  handleDeleteClick = (index: number) => {
+    const modifiedList = this.state.exerciseList.slice(0)
+    modifiedList.splice(index, 1)
+    this.setState ({exerciseList: modifiedList})
+  }
+
+
 
   render() {
     return (
       <div className="container">
-        <Form>
-          <Form.Group>
-            <Form.Control type="text" placeholder="type question" value={this.state.question} onChange={(event: any) => { this.setState({ question: event.target.value }) }} />
-            <Form.Control type="text" placeholder="type answer" value={this.state.answer} onChange={(event: any) => { this.setState({ answer: event.target.value }) }} />
-          </Form.Group>
-          <Button variant="primary" onClick={(event: any) => this.props.handleNewQuestion({question: this.state.question, answer:this.state.answer})}>
-            OK
-          </Button>
-        </Form>
+        <h1>Fragenliste</h1>
+        <h2>Frage</h2>
+        {
+          this.state.exerciseList.map((nextExercise, index) =>
+            <div className="row">
+              <div className="col">
+                <input type="text" value={nextExercise.question} onChange={(event: React.ChangeEvent<HTMLInputElement>) => { this.handleQuestionChanged(event.target.value, index) }} />
+              </div>
+              <div className="col">
+                <input type="text" value={nextExercise.correctAnswer} onChange={(event: React.ChangeEvent<HTMLInputElement>) => { this.handleAnswerChanged(event.target.value, index) }} />
+              </div>
+              <div className="col">
+                <button onClick={(event: any)=>{ this.handleDeleteClick(index)}}>Delete</button>
+              </div>
+
+            </div>)}
       </div>
     );
   }
 }
+
 
 export default Teacher;

@@ -19,7 +19,7 @@ class Result extends Component<ResultProps, ResultState> {
     return (
       
       <div className="container">
-      <h1>Auswertung</h1>
+      <h1 className="result">Auswertung</h1>
         {this.props.exerciseList.map(nextExercise =>
           <div className="row">
             <div className="col">

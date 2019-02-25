@@ -4,6 +4,6 @@ import Teacher from './Teacher';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<Teacher />, div);
+  ReactDOM.render(<Teacher exerciseList={[]}/>, div);
   ReactDOM.unmountComponentAtNode(div);
 });
